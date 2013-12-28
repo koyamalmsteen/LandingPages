@@ -27,8 +27,14 @@
   </target>
 
   <target name="html" description="Copy html directory into /var/www">
-    <copy todir="/var/www/html">
+    <copy todir="/var/www/html" overwrite="true">
       <fileset dir="html" />
+    </copy>
+  </target>
+
+  <target name="cgi-bin" description="Copy cgi-bin directory into /var/www">
+    <copy todir="/var/www/cgi-bin" overwrite="true">
+      <fileset dir="cgi-bin" />
     </copy>
   </target>
 
@@ -42,6 +48,19 @@
     </exec>
     <exec executable="chkconfig">
       <arg line="httpd on"/>
+    </exec>
+  </target>
+
+  <target name="openlayers" description="Install OpenLayers.">
+    <get src="${src_openlayers}" dest="${dst_openlayers}" usetimestamp="true" />
+    <unzip src="${dst_openlayers}" dest="${src}" />
+    <copy todir="/var/www/html/${openlayers_prefix}" overwrite="true">
+      <fileset dir="${src}/${openlayers_prefix}" />
+    </copy>
+    <exec executable="ln">
+      <arg value="-s" />
+      <arg value="/var/www/html/${openlayers_prefix}" />
+      <arg value="/var/www/html/OpenLayers" />
     </exec>
   </target>
 
