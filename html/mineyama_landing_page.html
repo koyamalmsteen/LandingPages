@@ -7,9 +7,16 @@
 <title>Mineyama Geomagnetic Field Data</title>
 <link rel="stylesheet" type="text/css" href="css/ghrc.css" />
 <link rel="stylesheet" type="text/css" href="css/hydro.css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> 
+ <meta name="apple-mobile-web-app-capable" content="yes" />
+ <link rel="stylesheet" href="OpenLayers/theme/default/style.css" type="text/css" />
+<link rel="stylesheet" href="OpenLayers/examples/style.css" type="text/css" />
+<script src="OpenLayers/OpenLayers.js" type="text/javascript"></script>
+<script src="anchor-permalink.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body onload="init()">
 <p class="blue_title">
 Mineyama Geomagnetic Field Data
 </p>
@@ -85,6 +92,13 @@ This data set is a part of the collection of geomagnetic field data at World Dat
 <tr>
   <td class="attr" valign="top">Stop date:</td>
   <td class="value" valign="top" colspan="1">Present</td>
+</tr>
+
+<tr>
+  <td></td>
+  <td colspan="2">
+    <div id="map" class="smallmap"></div>
+  </td>
 </tr>
 
 <tr>
